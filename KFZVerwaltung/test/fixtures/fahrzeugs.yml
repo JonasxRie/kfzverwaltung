@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  bezeichnung: MyString
+  kennzeichen: MyString
+  tuv: 2017-11-21
+  baujahr: 1
+  notizen: MyText
+  archiviert: false
+
+two:
+  bezeichnung: MyString
+  kennzeichen: MyString
+  tuv: 2017-11-21
+  baujahr: 1
+  notizen: MyText
+  archiviert: false

@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Bezeichnung:</strong>
+  <%= @fahrzeug.bezeichnung %>
+</p>
+
+<p>
+  <strong>Kennzeichen:</strong>
+  <%= @fahrzeug.kennzeichen %>
+</p>
+
+<p>
+  <strong>Tuv:</strong>
+  <%= @fahrzeug.tuv %>
+</p>
+
+<p>
+  <strong>Baujahr:</strong>
+  <%= @fahrzeug.baujahr %>
+</p>
+
+<p>
+  <strong>Notizen:</strong>
+  <%= @fahrzeug.notizen %>
+</p>
+
+<p>
+  <strong>Archiviert:</strong>
+  <%= @fahrzeug.archiviert %>
+</p>
+
+<%= link_to 'Edit', edit_fahrzeug_path(@fahrzeug) %> |
+<%= link_to 'Back', fahrzeugs_path %>
