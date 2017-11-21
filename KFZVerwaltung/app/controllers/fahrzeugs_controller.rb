@@ -61,6 +61,11 @@ class FahrzeugsController < ApplicationController
     end
   end
 
+  # TODO: Jonas fragen!
+  def filter_selection_changed 
+    puts 'Hallo'
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_fahrzeug

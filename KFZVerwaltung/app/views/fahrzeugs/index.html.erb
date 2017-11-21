@@ -20,7 +20,12 @@
       <th>Kennzeichen</th>
       <th>TÜV</th>
       <th>Baujahr</th>
-      <th colspan="3"></th>
+      <th colspan="4"></th>
+      <th>
+        <%= select_tag(:filter, 
+          options_for_select([['Alle', 1], ['Aktive', 2], ['Archivierte', 3]], 2), 
+          :onchange => 'filter_selection_changed()') %>
+      </th>
     </tr>
   </thead>
 
@@ -31,9 +36,11 @@
         <td><%= fahrzeug.kennzeichen %></td>
         <td><%= fahrzeug.tuv %></td>
         <td><%= fahrzeug.baujahr %></td>
-        <td><%= link_to 'Show', fahrzeug %></td>
-        <td><%= link_to 'Edit', edit_fahrzeug_path(fahrzeug) %></td>
-        <td><%= link_to 'Destroy', fahrzeug, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Anzeigen', fahrzeug %></td>
+        <td><%= link_to 'Bearbeiten', edit_fahrzeug_path(fahrzeug) %></td>
+        <td><%= link_to 'Archivieren', fahrzeug, method: :archive %></td>
+        <td><%= link_to 'Dokumente', dokuments_path(fahrzeug) %></td>
+        <td><%= link_to 'Löschen', fahrzeug, method: :delete, data: { confirm: 'Wirklich löschen?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -41,4 +48,4 @@
 
 <br>
 
-<%= link_to 'New Fahrzeug', new_fahrzeug_path %>
+<%= link_to 'Neues Fahrzeug', new_fahrzeug_path %>
