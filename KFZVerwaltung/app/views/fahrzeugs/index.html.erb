@@ -18,10 +18,8 @@
     <tr>
       <th>Bezeichnung</th>
       <th>Kennzeichen</th>
-      <th>Tuv</th>
+      <th>TÜV</th>
       <th>Baujahr</th>
-      <th>Notizen</th>
-      <th>Archiviert</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -33,8 +31,6 @@
         <td><%= fahrzeug.kennzeichen %></td>
         <td><%= fahrzeug.tuv %></td>
         <td><%= fahrzeug.baujahr %></td>
-        <td><%= fahrzeug.notizen %></td>
-        <td><%= fahrzeug.archiviert %></td>
         <td><%= link_to 'Show', fahrzeug %></td>
         <td><%= link_to 'Edit', edit_fahrzeug_path(fahrzeug) %></td>
         <td><%= link_to 'Destroy', fahrzeug, method: :delete, data: { confirm: 'Are you sure?' } %></td>
