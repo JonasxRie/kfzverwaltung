@@ -1,0 +1,22 @@
+%p#notice= notice
+%p
+  %strong Bezeichnung:
+  = @fahrzeug.bezeichnung
+%p
+  %strong Kennzeichen:
+  = @fahrzeug.kennzeichen
+%p
+  %strong TÜV:
+  = @fahrzeug.tuv
+%p
+  %strong Baujahr:
+  = @fahrzeug.baujahr
+%p
+  %strong Notizen:
+  = @fahrzeug.notizen
+%p
+  %strong Archiviert:
+  = @fahrzeug.archiviert
+= link_to 'Bearbeiten', edit_fahrzeug_path(@fahrzeug)
+|
+\#{link_to 'Zurück', fahrzeugs_path}

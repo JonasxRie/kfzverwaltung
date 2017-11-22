@@ -1,0 +1,35 @@
+%p#notice= notice
+.navbody
+  %header
+    .nav
+      %ul
+        %li.home= link_to 'Fahrzeuge', fahrzeugs_path
+        %li.tutorials= link_to 'Dokumente', dokuments_path
+%br/
+%br/
+%table
+  %thead
+    %tr
+      %th Bezeichnung
+      %th Kennzeichen
+      %th TÜV
+      %th Baujahr
+      %th{:colspan => "4"}
+      %th
+        = link_to 'Aktive', fahrzeugs_path(:filter => nil)
+        = link_to 'Archivierte', fahrzeugs_path(:filter => 1)
+        = link_to 'Alle', fahrzeugs_path(:filter => 0)
+  %tbody
+    - @fahrzeugs.each do |fahrzeug|
+      %tr
+        %td= fahrzeug.bezeichnung
+        %td= fahrzeug.kennzeichen
+        %td= fahrzeug.tuv
+        %td= fahrzeug.baujahr
+        %td= link_to 'Anzeigen', fahrzeug
+        %td= link_to 'Bearbeiten', edit_fahrzeug_path(fahrzeug)
+        %td= link_to 'Archivieren', fahrzeug, method: :archive
+        %td= link_to 'Dokumente', dokuments_path(fahrzeug)
+        %td= link_to 'Löschen', fahrzeug, method: :delete, data: { confirm: 'Wirklich löschen?' }
+%br/
+= link_to 'Neues Fahrzeug', new_fahrzeug_path
