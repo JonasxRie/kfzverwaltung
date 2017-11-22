@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get "dokuments/:id/download_file" => "dokuments#download_file"
+  post 'fahrzeugs/archive' => 'fahrzeugs#archive'
 
   resources :dokuments
   resources :fahrzeugs
