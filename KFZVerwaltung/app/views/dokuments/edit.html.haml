@@ -1,0 +1,10 @@
+%body
+  .navbody
+    %header
+      .nav
+        %ul
+          %li.home Dokument ändern
+  = render 'form', dokument: @dokument
+  = link_to 'Show', @dokument
+  |
+  = link_to 'Back', dokuments_path

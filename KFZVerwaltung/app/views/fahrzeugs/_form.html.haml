@@ -1,0 +1,29 @@
+= form_with(model: fahrzeug, local: true) do |form|
+  - if fahrzeug.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(fahrzeug.errors.count, "error")
+        prohibited this fahrzeug from being saved:
+      %ul
+        - fahrzeug.errors.full_messages.each do |message|
+          %li= message
+  .field
+    = form.label :bezeichnung
+    = form.text_field :bezeichnung, id: :fahrzeug_bezeichnung
+  .field
+    = form.label :kennzeichen
+    = form.text_field :kennzeichen, id: :fahrzeug_kennzeichen
+  .field
+    = form.label :tuv, 'T├£V'
+    = form.date_select :tuv, id: :fahrzeug_tuv
+  .field
+    = form.label :baujahr
+    = form.number_field :baujahr, id: :fahrzeug_baujahr
+  .field
+    = form.label :notizen
+    = form.text_area :notizen, id: :fahrzeug_notizen
+  .field
+    = form.label :archiviert
+    = form.check_box :archiviert, id: :fahrzeug_archiviert
+  .actions
+    = form.submit

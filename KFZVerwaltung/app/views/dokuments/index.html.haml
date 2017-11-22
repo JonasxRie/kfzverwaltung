@@ -1,0 +1,32 @@
+%body
+  %p#notice= notice
+  .navbody
+    %header
+      .nav
+        %ul
+          %li.home= link_to 'Fahrzeuge', fahrzeugs_path
+          %li.tutorials= link_to 'Dokumente', dokuments_path
+  %br/
+  %br/
+  %table
+    %thead
+      %tr
+        %th Bezeichnung
+        %th Speicherdatum
+        %th Fahrzeug
+        %th Typ
+        %th Datei
+        %th{:colspan => "3"}
+    %tbody
+      - @dokuments.each do |dokument|
+        %tr
+          %td= dokument.bezeichnung
+          %td= dokument.speicherdatum
+          %td= dokument.fahrzeug
+          %td= dokument.typ
+          %td= dokument.datei
+          %td= link_to 'Show', dokument
+          %td= link_to 'Edit', edit_dokument_path(dokument)
+          %td= link_to 'Destroy', dokument, method: :delete, data: { confirm: 'Are you sure?' }
+  %br/
+  = link_to 'New Dokument', new_dokument_path

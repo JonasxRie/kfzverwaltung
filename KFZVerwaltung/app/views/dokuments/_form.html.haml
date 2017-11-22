@@ -1,0 +1,26 @@
+= form_with(model: dokument, local: true) do |form|
+  - if dokument.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(dokument.errors.count, "error")
+        prohibited this dokument from being saved:
+      %ul
+        - dokument.errors.full_messages.each do |message|
+          %li= message
+  .field
+    = form.label :bezeichnung
+    = form.text_field :bezeichnung, id: :dokument_bezeichnung
+  .field
+    = form.label :speicherdatum
+    = form.date_select :speicherdatum, id: :dokument_speicherdatum
+  .field
+    = form.label :fahrzeug_id
+    = form.text_field :fahrzeug_id, id: :dokument_fahrzeug_id
+  .field
+    = form.label :typ
+    = form.text_field :typ, id: :dokument_typ
+  .field
+    = form.label :datei
+    = form.file_field :datei, id: :dokument_datei
+  .actions
+    = form.submit
