@@ -10,6 +10,8 @@ class DokumentsController < ApplicationController
   # GET /dokuments/1
   # GET /dokuments/1.json
   def show
+    @dokument = Dokument.find(params[:id])
+    send_data @dokument.datei, type: 'application/pdf', filename: @dokument.bezeichnung
   end
 
   # GET /dokuments/new

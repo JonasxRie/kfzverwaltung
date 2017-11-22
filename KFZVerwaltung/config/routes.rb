@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  get "dokuments/:id/download_file" => "dokuments#download_file"
+
   resources :dokuments
   resources :fahrzeugs
 

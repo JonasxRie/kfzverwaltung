@@ -1,0 +1,20 @@
+%p#notice= notice
+%p
+  %strong Bezeichnung:
+  = @dokument.bezeichnung
+%p
+  %strong Speicherdatum:
+  = @dokument.speicherdatum
+%p
+  %strong Fahrzeug:
+  = @dokument.fahrzeug
+%p
+  %strong Typ:
+  = @dokument.typ
+%p
+  %strong Datei:
+  = @dokument.datei
+/ %= button_to "Download", :action => "download_file", :controller => "dokuments" %
+= link_to 'Edit', edit_dokument_path(@dokument)
+|
+= link_to 'Back', dokuments_path
