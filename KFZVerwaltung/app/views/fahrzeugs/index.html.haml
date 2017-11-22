@@ -9,14 +9,14 @@
 %br/
 
 .filter 
-  = link_to 'Aktive', fahrzeugs_path(:filter => nil)
+  = link_to 'Aktive', fahrzeugs_path(:filter => nil, :sort => params[:sort], :col => params[:col])
   = link_to 'Archivierte', fahrzeugs_path(:filter => 1)
   = link_to 'Alle', fahrzeugs_path(:filter => 0)
 
 %table 
   %thead
     %tr
-      %th Bezeichnung
+      %th= link_to 'Bezeichnung', fahrzeugs_path(:sort => 'asc', :col => :bezeichnung, :filter => params[:filter])
       %th Kennzeichen
       %th TÜV
       %th Baujahr
