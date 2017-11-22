@@ -62,6 +62,14 @@ class FahrzeugsController < ApplicationController
     end
   end
 
+  # Fahrzeug archivieren
+  def archive
+    puts params[:id]
+    kfz = Fahrzeug.find(params[:id])
+    kfz.update_attribute(:archiviert, true)
+    redirect_to fahrzeugs_path
+  end
+
   # DELETE /fahrzeugs/1
   # DELETE /fahrzeugs/1.json
   def destroy
