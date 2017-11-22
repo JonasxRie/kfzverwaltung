@@ -22,9 +22,9 @@
       <th>Baujahr</th>
       <th colspan="4"></th>
       <th>
-        <%= select_tag(:filter, 
-          options_for_select([['Alle', 1], ['Aktive', 2], ['Archivierte', 3]], 2), 
-          :onchange => 'filter_selection_changed()') %>
+        <%= link_to 'Aktive', fahrzeugs_path(:filter => nil) %>
+        <%= link_to 'Archivierte', fahrzeugs_path(:filter => 1) %>
+        <%= link_to 'Alle', fahrzeugs_path(:filter => 0) %>
       </th>
     </tr>
   </thead>
@@ -39,7 +39,7 @@
         <td><%= link_to 'Anzeigen', fahrzeug %></td>
         <td><%= link_to 'Bearbeiten', edit_fahrzeug_path(fahrzeug) %></td>
         <td><%= link_to 'Archivieren', fahrzeug, method: :archive %></td>
-        <td><%= link_to 'Dokumente', dokuments_path(fahrzeug) %></td> # Dokumente filtern
+        <td><%= link_to 'Dokumente', dokuments_path(fahrzeug) %></td>
         <td><%= link_to 'Löschen', fahrzeug, method: :delete, data: { confirm: 'Wirklich löschen?' } %></td>
       </tr>
     <% end %>

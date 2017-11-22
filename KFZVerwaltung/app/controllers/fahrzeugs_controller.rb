@@ -4,7 +4,18 @@ class FahrzeugsController < ApplicationController
   # GET /fahrzeugs
   # GET /fahrzeugs.json
   def index
-    @fahrzeugs = Fahrzeug.all
+    if params[:filter] && !params[:filter].empty?
+      if params[:filter] == '0'
+        # alle Fahrzeuge
+        @fahrzeugs = Fahrzeug.all 
+      else
+        # nur archivierte Fahrzeuge
+        @fahrzeugs = Fahrzeug.where(:archiviert => 1)
+      end
+    else
+      # Kein Filter gesetzt: nur aktive Fahrzeuge
+      @fahrzeugs = Fahrzeug.where(:archiviert => 0)
+    end
   end
 
   # GET /fahrzeugs/1
@@ -59,11 +70,6 @@ class FahrzeugsController < ApplicationController
       format.html { redirect_to fahrzeugs_url, notice: 'Fahrzeug was successfully destroyed.' }
       format.json { head :no_content }
     end
-  end
-
-  # TODO: Jonas fragen!
-  def filter_selection_changed 
-    puts 'Hallo'
   end
 
   private
