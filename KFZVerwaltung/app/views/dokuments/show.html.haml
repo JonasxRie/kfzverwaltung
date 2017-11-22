@@ -7,14 +7,15 @@
   = @dokument.speicherdatum
 %p
   %strong Fahrzeug:
-  = @dokument.fahrzeug
+  = @dokument.fahrzeug.bezeichnung
 %p
   %strong Typ:
   = @dokument.typ
 %p
-  %strong Datei:
-  = @dokument.datei
-/ %= button_to "Download", :action => "download_file", :controller => "dokuments" %
-= link_to 'Edit', edit_dokument_path(@dokument)
+  /= button_to 'Datei herunterladen', dokuments_download_file_path(@dokument), method: :post
+  -# = link_to 'Download', dokuments_download_file_path(id: @dokument.id), disable_with: 'Downloading...'
+  = link_to 'Download', "dokuments/download_file/#{@dokument.id}", disable_with: 'Downloading...'
+
+= link_to 'Bearbeiten', edit_dokument_path(@dokument)
 |
-= link_to 'Back', dokuments_path
+= link_to 'Zurück', dokuments_path

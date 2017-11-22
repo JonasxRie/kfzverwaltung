@@ -15,7 +15,7 @@
     = form.date_select :speicherdatum, id: :dokument_speicherdatum
   .field
     = form.label :fahrzeug_id
-    = form.text_field :fahrzeug_id, id: :dokument_fahrzeug_id
+    = form.collection_select :fahrzeug_id, Fahrzeug.all, :id, :bezeichnung
   .field
     = form.label :typ
     = form.text_field :typ, id: :dokument_typ

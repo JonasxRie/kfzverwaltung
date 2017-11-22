@@ -4,14 +4,24 @@ class DokumentsController < ApplicationController
   # GET /dokuments
   # GET /dokuments.json
   def index
-    @dokuments = Dokument.all
+    if params[:f] && !params[:f].empty?
+      @dokuments = Dokument.where(:fahrzeug_id => params[:f])
+    else
+      @dokuments = Dokument.all
+    end
   end
 
   # GET /dokuments/1
   # GET /dokuments/1.json
   def show
     @dokument = Dokument.find(params[:id])
-    send_data @dokument.datei, type: 'application/pdf', filename: @dokument.bezeichnung
+    # send_data @dokument.datei, type: 'pdf', filename: @dokument.bezeichnung + '.pdf'
+    # send_file @dokument.datei, filename: @dokument.bezeichnung + '.pdf 
+  end
+  
+  def download_file
+    puts '#########################################################'
+    puts @dokument.bezeichnung
   end
 
   # GET /dokuments/new
