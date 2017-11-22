@@ -17,38 +17,35 @@
  .navbody {
     margin: 0;
     padding: 0;
-    background: #ccc;
   }
    
   .nav ul {
     list-style: none;
-    background-color: #444;
+    background-color: #e4e4e4;
     text-align: center;
     padding: 0;
     margin: 0;
   }
   .nav li {
-    font-family: 'Oswald', sans-serif;
+		font-family: "Lato", sans-serif;
     font-size: 1.2em;
-    line-height: 40px;
-    height: 40px;
-    border-bottom: 1px solid #888;
+    line-height: 50px;
+    height: 50px;
   }
    
   .nav a {
     text-decoration: none;
-    color: #fff;
+    font-weight: bold;
+    color: #777;
     display: block;
     transition: .3s background-color;
   }
    
   .nav a:hover {
-    background-color: #005f5f;
+    background-color: #b9b8b8;
   }
    
   .nav a.active {
-    background-color: #fff;
-    color: #444;
     cursor: default;
   }
    
