@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   post 'fahrzeugs/archive' => 'fahrzeugs#archive'
-  post 'dokuments/download_file' => 'dokuments#download_file'
+  post 'dokuments/download_file/:id' => 'dokuments#download_file'
 
   resources :dokuments
   resources :fahrzeugs
