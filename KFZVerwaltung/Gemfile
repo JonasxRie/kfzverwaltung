@@ -52,5 +52,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'haml-rails'
 
-# Bootstrap
+# for icons
 gem "font-awesome-rails"
+
+# Bootstrap
+gem "twitter-bootstrap-rails"

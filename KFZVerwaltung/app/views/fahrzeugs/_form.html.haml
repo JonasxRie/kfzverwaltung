@@ -7,23 +7,41 @@
       %ul
         - fahrzeug.errors.full_messages.each do |message|
           %li= message
-  .field
-    = form.label :bezeichnung
-    = form.text_field :bezeichnung, id: :fahrzeug_bezeichnung
-  .field
-    = form.label :kennzeichen
-    = form.text_field :kennzeichen, id: :fahrzeug_kennzeichen
-  .field
-    = form.label :tuv, 'TÜV'
-    = form.date_select :tuv, id: :fahrzeug_tuv
-  .field
-    = form.label :baujahr
-    = form.number_field :baujahr, id: :fahrzeug_baujahr
-  .field
-    = form.label :notizen
-    = form.text_area :notizen, id: :fahrzeug_notizen
-  .field
-    = form.label :archiviert
-    = form.check_box :archiviert, id: :fahrzeug_archiviert
-  .actions
-    = form.submit
+  
+  .form-grou.row
+    .col-sm-2
+      %label-col-form-label{:for => "bezeichnung"} Bezeichnung
+    .col-sm-10
+      = form.text_field :bezeichnung, id: :fahrzeug_bezeichnung
+  .form-grou.row
+    .col-sm-2
+      %label-col-form-label{:for => "kennzeichen"} Kennzeichen
+    .col-sm-10
+      = form.text_field :kennzeichen, id: :fahrzeug_kennzeichen
+  .form-grou.row
+    .col-sm-2
+      %label-col-form-label{:for => "tuv"} TÜV
+    .col-sm-10
+      = form.date_select :tuv, id: :fahrzeug_tuv
+  .form-grou.row
+    .col-sm-2
+      %label-col-form-label{:for => "baujahr"} Baujahr
+    .col-sm-10
+      = form.text_field :baujahr, id: :fahrzeug_baujahr
+  .form-grou.row
+    .col-sm-2
+      %label-col-form-label{:for => "notizen"} Notizen
+    .col-sm-10
+      = form.text_area :notizen, id: :fahrzeug_notizen
+  .form-grou.row
+    .col-sm-2
+      %label-col-form-label{:for => "archiviert"} Archiviert
+    .col-sm-10
+      = form.check_box :archiviert, id: :fahrzeug_archiviert
+  
+  .btn-group
+    = button_tag :type => :submit, :class => "btn btn-success" do
+      %span.glyphicon.glyphicon-ok
+      %span.hidden-sm= t(:ok)
+    
+    .btn.btn-default= link_to 'Zurück', fahrzeugs_path

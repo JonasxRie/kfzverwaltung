@@ -1,58 +1,48 @@
-%p#notice= notice
-.navbody
-  %header
-    .nav
-      %ul
-        %li.home= link_to 'Fahrzeuge', fahrzeugs_path
-        %li.tutorials= link_to 'Dokumente', dokuments_path
 %br/
 
-%i.fa.fa-camera-retro
-    
-%br/
-
-.filter
-  = form_tag fahrzeugs_path, method: :get do
+.container.filter
+  = form_tag fahrzeugs_path, :class => "btn btn-defaut", method: :get do
     = hidden_field_tag :sort, params[:sort]
     = hidden_field_tag :col, params[:col]
     = select_tag :filter, options_for_select([['Aktive', nil], ['Archivierte', 1], ['Alle', 0]], params[:filter]), :onchange => "this.form.submit()"
   
 
-%table 
-  %thead
-    %tr
-      %th 
-        Bezeichnung
-        = link_to '<i class="fa fa-chevron-up" aria-hidden="true"></i>'.html_safe, fahrzeugs_path(:sort => ' ASC', :col => :bezeichnung, :filter => params[:filter])
-        = link_to '<i class="fa fa-chevron-down" aria-hidden="true"></i>'.html_safe, fahrzeugs_path(:sort => ' DESC', :col => :bezeichnung, :filter => params[:filter])
-      %th 
-        Kennzeichen       
-        = link_to '<i class="fa fa-chevron-up" aria-hidden="true"></i>'.html_safe, fahrzeugs_path(:sort => ' ASC', :col => :kennzeichen, :filter => params[:filter])
-        = link_to '<i class="fa fa-chevron-down" aria-hidden="true"></i>'.html_safe, fahrzeugs_path(:sort => ' DESC', :col => :kennzeichen, :filter => params[:filter])
-      %th 
-        TÜV
-        = link_to '<i class="fa fa-chevron-up" aria-hidden="true"></i>'.html_safe, fahrzeugs_path(:sort => ' ASC', :col => :tuv, :filter => params[:filter])
-        = link_to '<i class="fa fa-chevron-down" aria-hidden="true"></i>'.html_safe, fahrzeugs_path(:sort => ' DESC', :col => :tuv, :filter => params[:filter])
-      %th 
-        Baujahr
-        = link_to '<i class="fa fa-chevron-up" aria-hidden="true"></i>'.html_safe, fahrzeugs_path(:sort => ' ASC', :col => :baujahr, :filter => params[:filter])
-        = link_to '<i class="fa fa-chevron-down" aria-hidden="true"></i>'.html_safe, fahrzeugs_path(:sort => ' DESC', :col => :baujahr, :filter => params[:filter])
-      %th{:colspan => "5"}        
-  %tbody
-    - @fahrzeugs.each do |fahrzeug|
+.container
+  %table.table.table-striped
+    %thead
       %tr
-        %td= fahrzeug.bezeichnung
-        %td= fahrzeug.kennzeichen
-        %td= fahrzeug.tuv
-        %td= fahrzeug.baujahr
-        %td= link_to 'Anzeigen', fahrzeug
-        %td= link_to 'Bearbeiten', edit_fahrzeug_path(fahrzeug)
-        - if !fahrzeug.archiviert
-          %td= link_to 'Archivieren', fahrzeugs_archive_path(:id => fahrzeug.id), method: :post, data: { confirm: 'Wirklich archivieren?' }
-        - else
-          %td Archiviert
-        %td= link_to 'Dokumente', dokuments_path(:f => fahrzeug.id)
-        %td= link_to 'Löschen', fahrzeug, method: :delete, data: { confirm: 'Wirklich löschen? Alle assozierten Dokumente werden ebenfalls gelöscht.' }
+        %th 
+          Bezeichnung
+          = link_to '<i class="fa fa-chevron-up" aria-hidden="true"></i>'.html_safe, fahrzeugs_path(:sort => ' ASC', :col => :bezeichnung, :filter => params[:filter])
+          = link_to '<i class="fa fa-chevron-down" aria-hidden="true"></i>'.html_safe, fahrzeugs_path(:sort => ' DESC', :col => :bezeichnung, :filter => params[:filter])
+        %th 
+          Kennzeichen       
+          = link_to '<i class="fa fa-chevron-up" aria-hidden="true"></i>'.html_safe, fahrzeugs_path(:sort => ' ASC', :col => :kennzeichen, :filter => params[:filter])
+          = link_to '<i class="fa fa-chevron-down" aria-hidden="true"></i>'.html_safe, fahrzeugs_path(:sort => ' DESC', :col => :kennzeichen, :filter => params[:filter])
+        %th 
+          TÜV
+          = link_to '<i class="fa fa-chevron-up" aria-hidden="true"></i>'.html_safe, fahrzeugs_path(:sort => ' ASC', :col => :tuv, :filter => params[:filter])
+          = link_to '<i class="fa fa-chevron-down" aria-hidden="true"></i>'.html_safe, fahrzeugs_path(:sort => ' DESC', :col => :tuv, :filter => params[:filter])
+        %th 
+          Baujahr
+          = link_to '<i class="fa fa-chevron-up" aria-hidden="true"></i>'.html_safe, fahrzeugs_path(:sort => ' ASC', :col => :baujahr, :filter => params[:filter])
+          = link_to '<i class="fa fa-chevron-down" aria-hidden="true"></i>'.html_safe, fahrzeugs_path(:sort => ' DESC', :col => :baujahr, :filter => params[:filter])
+        %th{:colspan => "5"}        
+    %tbody
+      - @fahrzeugs.each do |fahrzeug|
+        %tr
+          %td= fahrzeug.bezeichnung
+          %td= fahrzeug.kennzeichen
+          %td= fahrzeug.tuv
+          %td= fahrzeug.baujahr
+          %td= link_to 'Anzeigen', fahrzeug
+          %td= link_to 'Bearbeiten', edit_fahrzeug_path(fahrzeug)
+          - if !fahrzeug.archiviert
+            %td= link_to 'Archivieren', fahrzeugs_archive_path(:id => fahrzeug.id), method: :post, data: { confirm: 'Wirklich archivieren?' }
+          - else
+            %td Archiviert
+          %td= link_to 'Dokumente', dokuments_path(:f => fahrzeug.id)
+          %td= link_to 'Löschen', fahrzeug, method: :delete, data: { confirm: 'Wirklich löschen? Alle assozierten Dokumente werden ebenfalls gelöscht.' }
 
-%br/
-= link_to 'Neues Fahrzeug', new_fahrzeug_path
+  %br/
+  .btn.btn-primary= link_to 'Neues Fahrzeug', new_fahrzeug_path

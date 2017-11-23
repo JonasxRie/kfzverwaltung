@@ -1,23 +1,35 @@
-%p#notice= notice
-%p
-  %strong Bezeichnung:
-  = @dokument.bezeichnung
-%p
-  %strong Speicherdatum:
-  = @dokument.speicherdatum
-%p
-  %strong Fahrzeug:
-  = @dokument.fahrzeug.bezeichnung
-%p
-  %strong Typ:
-  = @dokument.typ
-%p
-  %strong Datei:
-  = @dokument.dateiname
-%p
-  - if @dokument.datei && @dokument.typ
-    = link_to 'Download', "download_file/#{@dokument.id}", disable_with: 'Downloading...', method: :post
+%h1 Dokument anzeigen
 
-= link_to 'Bearbeiten', edit_dokument_path(@dokument)
-|
-= link_to 'Zurück', dokuments_path
+.container
+  %table.table.table-striped
+    %tr
+      %td.col-sm-3
+        %strong Bezeichnung
+      %td.col-sm-9
+        = @dokument.bezeichnung
+    %tr
+      %td.col-sm-3
+        %strong Speicherdatum
+      %td.col-sm-9
+        = @dokument.speicherdatum
+    %tr
+      %td.col-sm-3
+        %strong Typ
+      %td.col-sm-9
+        = @dokument.typ
+    %tr
+      %td.col-sm-3
+        %strong Fahrzeug
+      %td.col-sm-9
+        = @dokument.fahrzeug.bezeichnung
+    %tr
+      %td.col-sm-3
+        %strong Datei
+      %td.col-sm-9
+        = @dokument.dateiname
+
+- if @dokument.datei && @dokument.typ
+  .btn.btn-info= link_to 'Download', "download_file/#{@dokument.id}", disable_with: 'Downloading...', method: :post
+
+.btn.btn-primary= link_to 'Bearbeiten', edit_dokument_path(@dokument)
+.btn.btn-default= link_to 'Zurück', dokuments_path

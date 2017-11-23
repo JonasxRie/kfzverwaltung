@@ -1,14 +1,8 @@
-%body
-  %p#notice= notice
-  .navbody
-    %header
-      .nav
-        %ul
-          %li.home= link_to 'Fahrzeuge', fahrzeugs_path
-          %li.tutorials= link_to 'Dokumente', dokuments_path
-  %br/
-  %br/
-  %table
+
+%br/
+
+.container
+  %table.table.table-striped
     %thead
       %tr
         %th Bezeichnung
@@ -27,4 +21,4 @@
           %td= link_to 'Bearbeiten', edit_dokument_path(dokument)
           %td= link_to 'Löschen', dokument, method: :delete, data: { confirm: 'Are you sure?' }
   %br/
-  = link_to 'Neues Dokument', new_dokument_path
+  .btn.btn-primary= link_to 'Neues Dokument', new_dokument_path

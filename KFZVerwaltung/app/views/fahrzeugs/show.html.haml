@@ -1,23 +1,32 @@
 %h1 Fahrzeug anzeigen
-%p#notice= notice
-%p
-  %strong Bezeichnung:
-  = @fahrzeug.bezeichnung
-%p
-  %strong Kennzeichen:
-  = @fahrzeug.kennzeichen
-%p
-  %strong TÜV:
-  = @fahrzeug.tuv
-%p
-  %strong Baujahr:
-  = @fahrzeug.baujahr
-%p
-  %strong Notizen:
-  = @fahrzeug.notizen
-%p
-  %strong Archiviert:
-  = @fahrzeug.archiviert
-= link_to 'Bearbeiten', edit_fahrzeug_path(@fahrzeug)
-|
-\#{link_to 'Zurück', fahrzeugs_path}
+
+.container
+  %table.table.table-striped
+    %tr
+      %td.col-sm-3
+        %strong Bezeichnung
+      %td.col-sm-9
+        = @fahrzeug.bezeichnung
+    %tr
+      %td.col-sm-3
+        %strong TÜV
+      %td.col-sm-9
+        = @fahrzeug.tuv
+    %tr
+      %td.col-sm-3
+        %strong Kennzeichen
+      %td.col-sm-9
+        = @fahrzeug.kennzeichen
+    %tr
+      %td.col-sm-3
+        %strong Baujahr
+      %td.col-sm-9
+        = @fahrzeug.baujahr
+    %tr
+      %td.col-sm-3
+        %strong Notizen
+      %td.col-sm-9
+        = @fahrzeug.notizen
+
+.btn.btn-primary= link_to 'Bearbeiten', edit_fahrzeug_path(@fahrzeug)
+.btn.btn-default= link_to 'Zurück', fahrzeugs_path
