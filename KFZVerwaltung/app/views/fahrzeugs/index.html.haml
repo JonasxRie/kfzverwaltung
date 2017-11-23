@@ -50,7 +50,7 @@
         - else
           %td Archiviert
         %td= link_to 'Dokumente', dokuments_path(:f => fahrzeug.id)
-        %td= link_to 'Löschen', fahrzeug, method: :delete, data: { confirm: 'Wirklich löschen?' }
+        %td= link_to 'Löschen', fahrzeug, method: :delete, data: { confirm: 'Wirklich löschen? Alle assozierten Dokumente werden ebenfalls gelöscht.' }
 
 %br/
 = link_to 'Neues Fahrzeug', new_fahrzeug_path

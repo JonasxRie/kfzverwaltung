@@ -15,7 +15,8 @@
   %strong Datei:
   = @dokument.dateiname
 %p
-  = link_to 'Download', "download_file/#{@dokument.id}", disable_with: 'Downloading...', method: :post
+  - if @dokument.datei && @dokument.typ
+    = link_to 'Download', "download_file/#{@dokument.id}", disable_with: 'Downloading...', method: :post
 
 = link_to 'Bearbeiten', edit_dokument_path(@dokument)
 |
