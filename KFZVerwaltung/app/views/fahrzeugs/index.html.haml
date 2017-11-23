@@ -1,11 +1,12 @@
 %br/
+%h1 Fahrzeuge
 
 .container.filter
   = form_tag fahrzeugs_path, :class => "btn btn-defaut", method: :get do
     = hidden_field_tag :sort, params[:sort]
     = hidden_field_tag :col, params[:col]
     = select_tag :filter, options_for_select([['Aktive', nil], ['Archivierte', 1], ['Alle', 0]], params[:filter]), :onchange => "this.form.submit()"
-  
+
 .container
   %table.table.table-striped
     %thead
