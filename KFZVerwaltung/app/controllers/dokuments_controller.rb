@@ -63,7 +63,7 @@ class DokumentsController < ApplicationController
 
     respond_to do |format|
       if @dokument.save
-        format.html { redirect_to @dokument, notice: 'Dokument was successfully created.' }
+        format.html { redirect_to @dokument, notice: 'Dokument wurde erfolgreich angelegt.' }
         format.json { render :show, status: :created, location: @dokument }
       else
         format.html { render :new }
@@ -77,7 +77,7 @@ class DokumentsController < ApplicationController
   def update
     respond_to do |format|
       if @dokument.update(dokument_params)
-        format.html { redirect_to @dokument, notice: 'Dokument was successfully updated.' }
+        format.html { redirect_to @dokument, notice: 'Dokument wurde erfolgreich bearbeitet.' }
         format.json { render :show, status: :ok, location: @dokument }
       else
         format.html { render :edit }
@@ -91,7 +91,7 @@ class DokumentsController < ApplicationController
   def destroy
     @dokument.destroy
     respond_to do |format|
-      format.html { redirect_to dokuments_url, notice: 'Dokument was successfully destroyed.' }
+      format.html { redirect_to dokuments_url, notice: 'Dokument wurde erfolgreich gelöscht.' }
       format.json { head :no_content }
     end
   end

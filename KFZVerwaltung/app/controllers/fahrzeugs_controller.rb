@@ -62,7 +62,7 @@ class FahrzeugsController < ApplicationController
     @fahrzeug = Fahrzeug.new(fahrzeug_params)
     respond_to do |format|
       if @fahrzeug.save
-        format.html { redirect_to @fahrzeug, notice: 'Fahrzeug was successfully created.' }
+        format.html { redirect_to @fahrzeug, notice: 'Fahrzeug wurde erfolgreich angelegt.' }
         format.json { render :show, status: :created, location: @fahrzeug }
       else
         format.html { render :new }
@@ -76,7 +76,7 @@ class FahrzeugsController < ApplicationController
   def update
     respond_to do |format|
       if @fahrzeug.update(fahrzeug_params)
-        format.html { redirect_to @fahrzeug, notice: 'Fahrzeug was successfully updated.' }
+        format.html { redirect_to @fahrzeug, notice: 'Fahrzeug wurde erfolgreich bearbeitet.' }
         format.json { render :show, status: :ok, location: @fahrzeug }
       else
         format.html { render :edit }
@@ -98,7 +98,7 @@ class FahrzeugsController < ApplicationController
   def destroy
     @fahrzeug.destroy
     respond_to do |format|
-      format.html { redirect_to fahrzeugs_url, notice: 'Fahrzeug was successfully destroyed.' }
+      format.html { redirect_to fahrzeugs_url, notice: 'Fahrzeug wurde erfolgreich gelöscht.' }
       format.json { head :no_content }
     end
   end
