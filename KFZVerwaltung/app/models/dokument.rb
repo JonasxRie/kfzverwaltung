@@ -5,7 +5,7 @@ class Dokument < ApplicationRecord
     file = params.delete(:datei)
     super
     if file
-      self.bezeichnung = sanitize_filename(file.original_filename)
+      self.dateiname = sanitize_filename(file.original_filename)
       self.typ = file.content_type
       self.datei = file.read
     end

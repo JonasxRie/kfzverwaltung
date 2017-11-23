@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171121084014) do
+ActiveRecord::Schema.define(version: 20171123074248) do
 
   create_table "dokuments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "bezeichnung"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20171121084014) do
     t.binary "datei"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "dateiname"
     t.index ["fahrzeug_id"], name: "index_dokuments_on_fahrzeug_id"
   end
 
