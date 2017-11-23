@@ -6,6 +6,9 @@
         %li.home= link_to 'Fahrzeuge', fahrzeugs_path
         %li.tutorials= link_to 'Dokumente', dokuments_path
 %br/
+
+%i.fa.fa-camera-retro
+    
 %br/
 
 .filter 
@@ -18,20 +21,20 @@
     %tr
       %th 
         Bezeichnung
-        = link_to 'asc', fahrzeugs_path(:sort => ' ASC', :col => :bezeichnung, :filter => params[:filter])
-        = link_to 'desc', fahrzeugs_path(:sort => ' DESC', :col => :bezeichnung, :filter => params[:filter])
+        = link_to '<i class="fa fa-chevron-up" aria-hidden="true"></i>'.html_safe, fahrzeugs_path(:sort => ' ASC', :col => :bezeichnung, :filter => params[:filter])
+        = link_to '<i class="fa fa-chevron-down" aria-hidden="true"></i>'.html_safe, fahrzeugs_path(:sort => ' DESC', :col => :bezeichnung, :filter => params[:filter])
       %th 
         Kennzeichen       
-        = link_to 'asc', fahrzeugs_path(:sort => ' ASC', :col => :kennzeichen, :filter => params[:filter])
-        = link_to 'desc', fahrzeugs_path(:sort => ' DESC', :col => :kennzeichen, :filter => params[:filter])
+        = link_to '<i class="fa fa-chevron-up" aria-hidden="true"></i>'.html_safe, fahrzeugs_path(:sort => ' ASC', :col => :kennzeichen, :filter => params[:filter])
+        = link_to '<i class="fa fa-chevron-down" aria-hidden="true"></i>'.html_safe, fahrzeugs_path(:sort => ' DESC', :col => :kennzeichen, :filter => params[:filter])
       %th 
         TÜV
-        = link_to 'asc', fahrzeugs_path(:sort => ' ASC', :col => :tuv, :filter => params[:filter])
-        = link_to 'desc', fahrzeugs_path(:sort => ' DESC', :col => :tuv, :filter => params[:filter])
+        = link_to '<i class="fa fa-chevron-up" aria-hidden="true"></i>'.html_safe, fahrzeugs_path(:sort => ' ASC', :col => :tuv, :filter => params[:filter])
+        = link_to '<i class="fa fa-chevron-down" aria-hidden="true"></i>'.html_safe, fahrzeugs_path(:sort => ' DESC', :col => :tuv, :filter => params[:filter])
       %th 
         Baujahr
-        = link_to 'asc', fahrzeugs_path(:sort => ' ASC', :col => :baujahr, :filter => params[:filter])
-        = link_to 'desc', fahrzeugs_path(:sort => ' DESC', :col => :baujahr, :filter => params[:filter])
+        = link_to '<i class="fa fa-chevron-up" aria-hidden="true"></i>'.html_safe, fahrzeugs_path(:sort => ' ASC', :col => :baujahr, :filter => params[:filter])
+        = link_to '<i class="fa fa-chevron-down" aria-hidden="true"></i>'.html_safe, fahrzeugs_path(:sort => ' DESC', :col => :baujahr, :filter => params[:filter])
       %th{:colspan => "5"}        
   %tbody
     - @fahrzeugs.each do |fahrzeug|
