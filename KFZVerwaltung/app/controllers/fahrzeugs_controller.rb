@@ -4,17 +4,41 @@ class FahrzeugsController < ApplicationController
   # GET /fahrzeugs
   # GET /fahrzeugs.json
   def index
-    if params[:filter] && !params[:filter].empty?
-      if params[:filter] == '0'
-        # alle Fahrzeuge
-        @fahrzeugs = Fahrzeug.all 
+    # Filter und Sortierung anwenden
+
+    if !params[:filter] || params[:filter].empty?
+
+      # AKTIVE Fahrzeuge
+      if params[:sort] && !params[:sort].empty?
+        # Sortieren: params:[:sort] enthält entweder ' ASC' oder ' DESC'
+        @fahrzeugs = Fahrzeug.where(:archiviert => 0).order(params[:col] + params[:sort])
       else
-        # nur archivierte Fahrzeuge
+        # OHNE Sortierung
+        @fahrzeugs = Fahrzeug.where(:archiviert => 0)
+      end
+
+    elsif params[:filter] == '1'
+
+      # ARCHIVIERTE Fahrzeuge
+      if params[:sort] && !params[:sort].empty?
+        # Sortieren: params:[:sort] enthält entweder ' ASC' oder ' DESC'
+        @fahrzeugs = Fahrzeug.where(:archiviert => 1).order(params[:col] + params[:sort])
+      else
+        # OHNE Sortierung
         @fahrzeugs = Fahrzeug.where(:archiviert => 1)
       end
-    else
-      # Kein Filter gesetzt: nur aktive Fahrzeuge
-      @fahrzeugs = Fahrzeug.where(:archiviert => 0)
+
+    elsif params[:filter] == '0'
+
+      # ALLE Fahrzeuge
+      if params[:sort] && !params[:sort].empty?
+        # Sortieren: params:[:sort] enthält entweder ' ASC' oder ' DESC'
+        @fahrzeugs = Fahrzeug.order(params[:col] + params[:sort])
+      else
+        # OHNE Sortierung
+        @fahrzeugs = Fahrzeug.all
+      end
+
     end
   end
 
