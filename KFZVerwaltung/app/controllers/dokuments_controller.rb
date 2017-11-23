@@ -21,8 +21,6 @@ class DokumentsController < ApplicationController
   
   def download_file
     @dokument = Dokument.find(params[:id])
-    puts '#########################################################'
-    puts @dokument.bezeichnung
     send_data(@dokument.datei, type: @dokument.typ, filename: @dokument.dateiname)
   end
 

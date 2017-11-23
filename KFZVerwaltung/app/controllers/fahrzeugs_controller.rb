@@ -60,7 +60,6 @@ class FahrzeugsController < ApplicationController
   # POST /fahrzeugs.json
   def create
     @fahrzeug = Fahrzeug.new(fahrzeug_params)
-
     respond_to do |format|
       if @fahrzeug.save
         format.html { redirect_to @fahrzeug, notice: 'Fahrzeug was successfully created.' }

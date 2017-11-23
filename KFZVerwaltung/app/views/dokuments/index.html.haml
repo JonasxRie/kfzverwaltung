@@ -20,7 +20,7 @@
       - @dokuments.each do |dokument|
         %tr
           %td= dokument.bezeichnung
-          %td= dokument.fahrzeug.bezeichnung
+          %td= link_to dokument.fahrzeug.bezeichnung, fahrzeug_url(dokument.fahrzeug.id)
           %td= dokument.speicherdatum
           %td= dokument.typ
           %td= link_to 'Anzeigen', dokument
