@@ -7,37 +7,37 @@
       %ul
         - fahrzeug.errors.full_messages.each do |message|
           %li= message
-  
-  .form-grou.row
-    .col-sm-2
-      %label-col-form-label{:for => "bezeichnung"} Bezeichnung
-    .col-sm-10
-      = form.text_field :bezeichnung, id: :fahrzeug_bezeichnung
-  .form-grou.row
-    .col-sm-2
-      %label-col-form-label{:for => "kennzeichen"} Kennzeichen
-    .col-sm-10
-      = form.text_field :kennzeichen, id: :fahrzeug_kennzeichen
-  .form-grou.row
-    .col-sm-2
-      %label-col-form-label{:for => "tuv"} TÜV Termin
-    .col-sm-10
-      = form.date_select :tuv, id: :fahrzeug_tuv
-  .form-grou.row
-    .col-sm-2
-      %label-col-form-label{:for => "baujahr"} Baujahr
-    .col-sm-10
-      = form.text_field :baujahr, id: :fahrzeug_baujahr
-  .form-grou.row
-    .col-sm-2
-      %label-col-form-label{:for => "notizen"} Notizen
-    .col-sm-10
-      = form.text_area :notizen, id: :fahrzeug_notizen
-  .form-grou.row
-    .col-sm-2
-      %label-col-form-label{:for => "archiviert"} Archiviert
-    .col-sm-10
-      = form.check_box :archiviert, id: :fahrzeug_archiviert
+  %table.table
+    %tr.form-group.row
+      %td.col-sm-2
+        %label-col-form-label{:for => "bezeichnung"} Bezeichnung
+      %td.col-sm-10
+        .col-sm-12= form.text_field :bezeichnung, id: :fahrzeug_bezeichnung
+    %tr.form-grou.row
+      %td.col-sm-2
+        %label-col-form-label{:for => "kennzeichen"} Kennzeichen
+      %td.col-sm-10
+        .col-sm-12= form.text_field :kennzeichen, id: :fahrzeug_kennzeichen
+    %tr.form-grou.row
+      %td.col-sm-2
+        %label-col-form-label{:for => "tuv"} TÜV Termin
+      %td.col-sm-10
+        .col-sm-12= form.date_select :tuv, id: :fahrzeug_tuv
+    %tr.form-grou.row
+      %td.col-sm-2
+        %label-col-form-label{:for => "baujahr"} Baujahr
+      %td.col-sm-10
+        .col-sm-12= form.text_field :baujahr, id: :fahrzeug_baujahr
+    %tr.form-grou.row
+      %td.col-sm-2
+        %label-col-form-label{:for => "archiviert"} Archiviert
+      %td.col-sm-10
+        .col-sm-12= form.check_box :archiviert, id: :fahrzeug_archiviert
+    %tr.form-grou.row
+      %td.col-sm-2
+        %label-col-form-label{:for => "notizen"} Notizen
+      %td.col-sm-10
+        .col-sm-12= form.text_area :notizen, id: :fahrzeug_notizen
   
   .btn-group
     = button_tag :type => :submit, :class => "btn btn-success" do

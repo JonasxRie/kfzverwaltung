@@ -8,26 +8,27 @@
         - dokument.errors.full_messages.each do |message|
           %li= message
   
-  .form-grou.row
-    .col-sm-2
-      %label-col-form-label{:for => "bezeichnung"} Bezeichnung
-    .col-sm-10
-      = form.text_field :bezeichnung, id: :dokument_bezeichnung
-  .form-grou.row
-    .col-sm-2
-      %label-col-form-label{:for => "speicherdatum"} Speicherdatum
-    .col-sm-10
-      = form.date_select :speicherdatum, id: :dokument_speicherdatum
-  .form-grou.row
-    .col-sm-2
-      %label-col-form-label{:for => "fahrzeug_id"} Fahrzeug
-    .col-sm-10
-      = form.collection_select :fahrzeug_id, Fahrzeug.all, :id, :bezeichnung
-  .form-grou.row
-    .col-sm-2
-      %label-col-form-label{:for => "datei"} Datei
-    .col-sm-10
-      = form.file_field :datei, id: :dokument_datei
+  %table.table
+    %tr.form-grou.row
+      %td.col-sm-2
+        %label-col-form-label{:for => "bezeichnung"} Bezeichnung
+      %td.col-sm-10
+        = form.text_field :bezeichnung, id: :dokument_bezeichnung
+    %tr.form-grou.row
+      %td.col-sm-2
+        %label-col-form-label{:for => "speicherdatum"} Speicherdatum
+      %td.col-sm-10
+        = form.date_select :speicherdatum, id: :dokument_speicherdatum
+    %tr.form-grou.row
+      %td.col-sm-2
+        %label-col-form-label{:for => "fahrzeug_id"} Fahrzeug
+      %td.col-sm-10
+        = form.collection_select :fahrzeug_id, Fahrzeug.all, :id, :bezeichnung
+    %tr.form-grou.row
+      %td.col-sm-2
+        %label-col-form-label{:for => "datei"} Datei
+      %td.col-sm-10
+        = form.file_field :datei, id: :dokument_datei
 
   .btn-group
     = button_tag :type => :submit, :class => "btn btn-success" do
