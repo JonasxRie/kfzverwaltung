@@ -40,7 +40,7 @@
           - if !fahrzeug.archiviert
             %td= link_to '<i class="fa fa-archive fa-lg"></i>'.html_safe, fahrzeugs_archive_path(:id => fahrzeug.id), method: :post, data: { confirm: 'Wirklich archivieren?' }
           - else
-            %td Archiviert
+            %td
           %td= link_to '<i class="fa fa-trash fa-lg"></i>'.html_safe, fahrzeug, method: :delete, data: { confirm: 'Wirklich löschen? Alle assozierten Dokumente werden ebenfalls gelöscht.' }
 
   %br/
