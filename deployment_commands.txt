@@ -1,0 +1,7 @@
+# gems installieren
+bunlde install
+
+# db connection in config/database.yml anpassen
+rake db:create
+
+rake db:migrate

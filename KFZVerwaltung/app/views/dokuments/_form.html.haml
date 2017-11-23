@@ -16,9 +16,9 @@
   .field
     = form.label :fahrzeug_id
     = form.collection_select :fahrzeug_id, Fahrzeug.all, :id, :bezeichnung
-  .field
-    = form.label :typ
-    = form.text_field :typ, id: :dokument_typ
+  -# .field
+  -#   = form.label :typ
+  -#   = form.text_field :typ, id: :dokument_typ
   .field
     = form.label :datei
     = form.file_field :datei, id: :dokument_datei

@@ -8,13 +8,13 @@
 %p
   %strong Fahrzeug:
   = @dokument.fahrzeug.bezeichnung
-%p
-  %strong Typ:
-  = @dokument.typ
+-# %p
+-#   %strong Typ:
+-#   = @dokument.typ
 %p
   /= button_to 'Datei herunterladen', dokuments_download_file_path(@dokument), method: :post
   -# = link_to 'Download', dokuments_download_file_path(id: @dokument.id), disable_with: 'Downloading...'
-  = link_to 'Download', "dokuments/download_file/#{@dokument.id}", disable_with: 'Downloading...'
+  = link_to 'Download', "download_file/#{@dokument.id}", disable_with: 'Downloading...', method: :post
 
 = link_to 'Bearbeiten', edit_dokument_path(@dokument)
 |
