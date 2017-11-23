@@ -1,5 +1,5 @@
 # gems installieren
-bunlde install
+bundle install
 
 # db connection in config/database.yml anpassen
 rake db:create
