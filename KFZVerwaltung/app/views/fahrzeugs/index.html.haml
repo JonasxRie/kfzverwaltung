@@ -11,10 +11,12 @@
     
 %br/
 
-.filter 
-  = link_to 'Aktive', fahrzeugs_path(:filter => nil, :sort => params[:sort], :col => params[:col])
-  = link_to 'Archivierte', fahrzeugs_path(:filter => 1, :sort => params[:sort], :col => params[:col])
-  = link_to 'Alle', fahrzeugs_path(:filter => 0, :sort => params[:sort], :col => params[:col])
+.filter
+  = form_tag fahrzeugs_path, method: :get do
+    = hidden_field_tag :sort, params[:sort]
+    = hidden_field_tag :col, params[:col]
+    = select_tag :filter, options_for_select([['Aktive', nil], ['Archivierte', 1], ['Alle', 0]], params[:filter]), :onchange => "this.form.submit()"
+  
 
 %table 
   %thead
