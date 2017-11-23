@@ -5,9 +5,32 @@ class DokumentsController < ApplicationController
   # GET /dokuments.json
   def index
     if params[:f] && !params[:f].empty?
-      @dokuments = Dokument.where(:fahrzeug_id => params[:f])
+      # Dokumente nach einem Fahrzeug filtern
+
+      if params[:sort] && !params[:sort].empty? && params[:col] != 'fahrzeug'
+        # Sortieren: params:[:sort] enthält entweder ' ASC' oder ' DESC'
+        # Nach Fahrzeug muss hier nicht gefiltert werden, da sowieso nur ein Wert in der Spalte ist
+        @dokuments = Dokument.where(:fahrzeug_id => params[:f]).order(params[:col] + params[:sort])
+      else
+        # OHNE Sortierung
+        @dokuments = Dokument.where(:fahrzeug_id => params[:f])
+      end
+
     else
-      @dokuments = Dokument.all
+      # Alle Dokumente anzeigen
+
+      if params[:sort] && !params[:sort].empty?
+        # Sortieren: params:[:sort] enthält entweder ' ASC' oder ' DESC'
+        if params[:col] == 'fahrzeug'
+          @dokuments = Dokument.joins(:fahrzeug).order('fahrzeugs.bezeichnung' + params[:sort])
+        else
+          @dokuments = Dokument.order(params[:col] + params[:sort])
+        end
+      else
+        # OHNE Sortierung
+        @dokuments = Dokument.all
+      end
+
     end
   end
 
@@ -40,7 +63,7 @@ class DokumentsController < ApplicationController
 
     respond_to do |format|
       if @dokument.save
-        format.html { redirect_to @dokument, notice: 'Dokument was successfully created.' }
+        format.html { redirect_to @dokument, notice: 'Dokument wurde erfolgreich angelegt.' }
         format.json { render :show, status: :created, location: @dokument }
       else
         format.html { render :new }
@@ -54,7 +77,7 @@ class DokumentsController < ApplicationController
   def update
     respond_to do |format|
       if @dokument.update(dokument_params)
-        format.html { redirect_to @dokument, notice: 'Dokument was successfully updated.' }
+        format.html { redirect_to @dokument, notice: 'Dokument wurde erfolgreich bearbeitet.' }
         format.json { render :show, status: :ok, location: @dokument }
       else
         format.html { render :edit }
@@ -68,7 +91,7 @@ class DokumentsController < ApplicationController
   def destroy
     @dokument.destroy
     respond_to do |format|
-      format.html { redirect_to dokuments_url, notice: 'Dokument was successfully destroyed.' }
+      format.html { redirect_to dokuments_url, notice: 'Dokument wurde erfolgreich gelöscht.' }
       format.json { head :no_content }
     end
   end
