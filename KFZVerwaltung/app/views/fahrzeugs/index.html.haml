@@ -45,4 +45,4 @@
           %td= link_to '<i class="fa fa-trash fa-lg" data-toggle="tooltip" title="Löschen"></i>'.html_safe, fahrzeug, method: :delete, data: { confirm: 'Wirklich löschen? Alle assozierten Dokumente werden ebenfalls gelöscht.' }
 
   %br/
-  .btn.btn-primary= link_to 'Neues Fahrzeug', new_fahrzeug_path
+  = link_to 'Neues Fahrzeug', new_fahrzeug_path, class: "btn btn-primary"

@@ -30,7 +30,6 @@
 
   .btn-group
     - if @dokument.datei && @dokument.typ
-      .btn.btn-info= link_to 'Download', "download_file/#{@dokument.id}", disable_with: 'Downloading...', method: :post
-
-    .btn.btn-primary= link_to 'Bearbeiten', edit_dokument_path(@dokument)
-    .btn.btn-default= link_to 'Zurück', dokuments_path
+      = link_to 'Download', "download_file/#{@dokument.id}", disable_with: 'Downloading...', method: :post, class: "btn btn-info"
+    = link_to 'Bearbeiten', edit_dokument_path(@dokument), class: "btn btn-primary"
+    = link_to 'Zurück', dokuments_path, class: "btn btn-default"

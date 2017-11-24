@@ -34,5 +34,4 @@
     = button_tag :type => :submit, :class => "btn btn-success" do
       %span.glyphicon.glyphicon-ok
       %span.hidden-sm= t(:ok)
-    
-    .btn.btn-default= link_to 'Zurück', dokuments_path
+    = link_to 'Zurück', dokuments_path, class: "btn btn-default"

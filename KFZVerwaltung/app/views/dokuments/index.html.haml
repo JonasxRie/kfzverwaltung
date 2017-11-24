@@ -33,4 +33,4 @@
           %td= link_to '<i class="fa fa-pencil fa-lg" data-toggle="tooltip" title="Bearbeiten"></i>'.html_safe, edit_dokument_path(dokument)
           %td= link_to '<i class="fa fa-trash fa-lg" data-toggle="tooltip" title="Löschen"></i>'.html_safe, dokument, method: :delete, data: { confirm: 'Wirklich löschen?' }
   %br/
-  .btn.btn-primary= link_to 'Neues Dokument', new_dokument_path
+  = link_to 'Neues Dokument', new_dokument_path, class: "btn btn-primary"
