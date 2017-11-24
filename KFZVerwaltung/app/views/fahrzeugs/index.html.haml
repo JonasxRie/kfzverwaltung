@@ -13,36 +13,36 @@
       %tr
         %th 
           Bezeichnung
-          = link_to '<i class="fa fa-chevron-up"></i>'.html_safe, fahrzeugs_path(:sort => ' ASC', :col => :bezeichnung, :filter => params[:filter])
-          = link_to '<i class="fa fa-chevron-down"></i>'.html_safe, fahrzeugs_path(:sort => ' DESC', :col => :bezeichnung, :filter => params[:filter])
+          = link_to '<i class="fa fa-chevron-up" data-toggle="tooltip" title="Aufsteigend sortieren"></i>'.html_safe, fahrzeugs_path(:sort => ' ASC', :col => :bezeichnung, :filter => params[:filter])
+          = link_to '<i class="fa fa-chevron-down" data-toggle="tooltip" title="Absteigend sortieren"></i>'.html_safe, fahrzeugs_path(:sort => ' DESC', :col => :bezeichnung, :filter => params[:filter])
         %th 
           Kennzeichen       
-          = link_to '<i class="fa fa-chevron-up"></i>'.html_safe, fahrzeugs_path(:sort => ' ASC', :col => :kennzeichen, :filter => params[:filter])
-          = link_to '<i class="fa fa-chevron-down"></i>'.html_safe, fahrzeugs_path(:sort => ' DESC', :col => :kennzeichen, :filter => params[:filter])
+          = link_to '<i class="fa fa-chevron-up" data-toggle="tooltip" title="Aufsteigend sortieren"></i>'.html_safe, fahrzeugs_path(:sort => ' ASC', :col => :kennzeichen, :filter => params[:filter])
+          = link_to '<i class="fa fa-chevron-down" data-toggle="tooltip" title="Absteigend sortieren"></i>'.html_safe, fahrzeugs_path(:sort => ' DESC', :col => :kennzeichen, :filter => params[:filter])
         %th 
           TÜV-Termin
-          = link_to '<i class="fa fa-chevron-up"></i>'.html_safe, fahrzeugs_path(:sort => ' ASC', :col => :tuv, :filter => params[:filter])
-          = link_to '<i class="fa fa-chevron-down"></i>'.html_safe, fahrzeugs_path(:sort => ' DESC', :col => :tuv, :filter => params[:filter])
+          = link_to '<i class="fa fa-chevron-up" data-toggle="tooltip" title="Aufsteigend sortieren"></i>'.html_safe, fahrzeugs_path(:sort => ' ASC', :col => :tuv, :filter => params[:filter])
+          = link_to '<i class="fa fa-chevron-down" data-toggle="tooltip" title="Absteigend sortieren"></i>'.html_safe, fahrzeugs_path(:sort => ' DESC', :col => :tuv, :filter => params[:filter])
         %th 
           Baujahr
-          = link_to '<i class="fa fa-chevron-up"></i>'.html_safe, fahrzeugs_path(:sort => ' ASC', :col => :baujahr, :filter => params[:filter])
-          = link_to '<i class="fa fa-chevron-down"></i>'.html_safe, fahrzeugs_path(:sort => ' DESC', :col => :baujahr, :filter => params[:filter])
-        %th{:colspan => "5"}      
+          = link_to '<i class="fa fa-chevron-up" data-toggle="tooltip" title="Aufsteigend sortieren"></i>'.html_safe, fahrzeugs_path(:sort => ' ASC', :col => :baujahr, :filter => params[:filter])
+          = link_to '<i class="fa fa-chevron-down" data-toggle="tooltip" title="Absteigend sortieren"></i>'.html_safe, fahrzeugs_path(:sort => ' DESC', :col => :baujahr, :filter => params[:filter])
+        %th{:colspan => "4"}      
     %tbody
       - @fahrzeugs.each do |fahrzeug|
         %tr
-          %td= fahrzeug.bezeichnung
+          %td= link_to fahrzeug.bezeichnung, fahrzeug
           %td= fahrzeug.kennzeichen
           %td= fahrzeug.tuv
           %td= fahrzeug.baujahr
-          %td= link_to '<i class="fa fa-info fa-lg"></i>'.html_safe, fahrzeug
-          %td= link_to '<i class="fa fa-pencil fa-lg"></i>'.html_safe, edit_fahrzeug_path(fahrzeug)
-          %td= link_to '<i class="fa fa-file-text fa-lg"></i>'.html_safe, dokuments_path(:f => fahrzeug.id)
+          %td= link_to '<i class="fa fa-info fa-lg" data-toggle="tooltip" title="Details anzeigen"></i>'.html_safe, fahrzeug
+          %td= link_to '<i class="fa fa-pencil fa-lg" data-toggle="tooltip" title="Bearbeiten"></i>'.html_safe, edit_fahrzeug_path(fahrzeug)
+          %td= link_to '<i class="fa fa-file-text fa-lg" data-toggle="tooltip" title="Dokumente anzeigen"></i>'.html_safe, dokuments_path(:f => fahrzeug.id)
           - if !fahrzeug.archiviert
-            %td= link_to '<i class="fa fa-archive fa-lg"></i>'.html_safe, fahrzeugs_archive_path(:id => fahrzeug.id), method: :post, data: { confirm: 'Wirklich archivieren?' }
+            %td= link_to '<i class="fa fa-archive fa-lg" data-toggle="tooltip" title="Archivieren"></i>'.html_safe, fahrzeugs_archive_path(:id => fahrzeug.id), method: :post, data: { confirm: 'Wirklich archivieren?' }
           - else
             %td
-          %td= link_to '<i class="fa fa-trash fa-lg"></i>'.html_safe, fahrzeug, method: :delete, data: { confirm: 'Wirklich löschen? Alle assozierten Dokumente werden ebenfalls gelöscht.' }
+          %td= link_to '<i class="fa fa-trash fa-lg" data-toggle="tooltip" title="Löschen"></i>'.html_safe, fahrzeug, method: :delete, data: { confirm: 'Wirklich löschen? Alle assozierten Dokumente werden ebenfalls gelöscht.' }
 
   %br/
   .btn.btn-primary= link_to 'Neues Fahrzeug', new_fahrzeug_path
