@@ -22,13 +22,13 @@ class DokumentsController < ApplicationController
       if params[:sort] && !params[:sort].empty?
         # Sortieren: params:[:sort] enthält entweder ' ASC' oder ' DESC'
         if params[:col] == 'fahrzeug'
-          @dokuments = Dokument.joins(:fahrzeug).order('fahrzeugs.bezeichnung' + params[:sort])
+          @dokuments = Dokument.joins("INNER JOIN fahrzeugs ON dokuments.fahrzeug_id = fahrzeugs.id WHERE archiviert = 0").order('fahrzeugs.bezeichnung' + params[:sort])
         else
-          @dokuments = Dokument.order(params[:col] + params[:sort])
+          @dokuments = Dokument.joins("INNER JOIN fahrzeugs ON dokuments.fahrzeug_id = fahrzeugs.id WHERE archiviert = 0").order(params[:col] + params[:sort])
         end
       else
         # OHNE Sortierung
-        @dokuments = Dokument.all
+        @dokuments = Dokument.joins("INNER JOIN fahrzeugs ON dokuments.fahrzeug_id = fahrzeugs.id WHERE archiviert = 0")
       end
 
     end
