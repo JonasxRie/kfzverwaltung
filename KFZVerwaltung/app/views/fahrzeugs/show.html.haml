@@ -28,5 +28,6 @@
       %td.col-sm-9
         = @fahrzeug.notizen
 
-.btn.btn-primary= link_to 'Bearbeiten', edit_fahrzeug_path(@fahrzeug)
-.btn.btn-default= link_to 'Zurück', fahrzeugs_path
+.btn-group
+  = link_to 'Bearbeiten', edit_fahrzeug_path(@fahrzeug), class: "btn btn-primary"
+  = link_to 'Zurück', fahrzeugs_path, class: "btn btn-default"
