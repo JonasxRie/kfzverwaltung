@@ -12,7 +12,7 @@
       %td.col-sm-2
         %label-col-form-label{:for => "bezeichnung"} Bezeichnung
       %td.col-sm-10
-        .col-sm-12= form.text_field :bezeichnung, id: :fahrzeug_bezeichnung
+        .col-sm-12= form.text_field :bezeichnung, id: :fahrzeug_bezeichnung,  :required => true
     %tr.form-grou.row
       %td.col-sm-2
         %label-col-form-label{:for => "kennzeichen"} Kennzeichen
@@ -43,5 +43,5 @@
     = button_tag :type => :submit, :class => "btn btn-success" do
       %span.glyphicon.glyphicon-ok
       %span.hidden-sm= t(:ok)
-    = link_to 'Zurück', fahrzeugs_path, class: "btn btn-default"
+    = link_to 'Zur Übersicht', fahrzeugs_path, class: "btn btn-info"
     

@@ -29,7 +29,16 @@
         %strong Notizen
       %td.col-sm-9
         = @fahrzeug.notizen
+    %tr
+      %td.col-sm-3
+        %strong Dokumente
+      %td.col-sm-6
+        - @dokuments.each do |dokument|
+          = link_to dokument.bezeichnung, dokument  
+          %br
+        %br
+        = link_to 'Neues Dokument', new_dokument_path(:f => @fahrzeug.id), class: "btn btn-default"
 
 .btn-group
   = link_to 'Bearbeiten', edit_fahrzeug_path(@fahrzeug), class: "btn btn-primary"
-  = link_to 'Zurück', fahrzeugs_path, class: "btn btn-default"
+  = link_to 'Zur Übersicht', fahrzeugs_path, class: "btn btn-info"
