@@ -13,17 +13,17 @@
       %td.col-sm-2
         %label-col-form-label{:for => "bezeichnung"} Bezeichnung
       %td.col-sm-10
-        = form.text_field :bezeichnung, id: :dokument_bezeichnung
+        = form.text_field :bezeichnung, id: :dokument_bezeichnung,  :required => true
     %tr.form-grou.row
       %td.col-sm-2
         %label-col-form-label{:for => "speicherdatum"} Speicherdatum
       %td.col-sm-10
-        = form.date_select :speicherdatum, id: :dokument_speicherdatum
+        = form.date_select :speicherdatum, id: :dokument_speicherdatum,  :required => true
     %tr.form-grou.row
       %td.col-sm-2
         %label-col-form-label{:for => "fahrzeug_id"} Fahrzeug
       %td.col-sm-10
-        = form.collection_select :fahrzeug_id, Fahrzeug.all, :id, :bezeichnung
+        = form.collection_select :fahrzeug_id, Fahrzeug.all, :id, :bezeichnung,  :required => true, :selected => params[:f]
     %tr.form-grou.row
       %td.col-sm-2
         %label-col-form-label{:for => "datei"} Datei
@@ -34,4 +34,4 @@
     = button_tag :type => :submit, :class => "btn btn-success" do
       %span.glyphicon.glyphicon-ok
       %span.hidden-sm= t(:ok)
-    = link_to 'Zurück', dokuments_path, class: "btn btn-default"
+    = link_to 'Zur Übersicht', dokuments_path, class: "btn btn-info"

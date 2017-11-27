@@ -23,7 +23,7 @@
       %td.col-sm-3
         %strong Fahrzeug
       %td.col-sm-9
-        = @dokument.fahrzeug.bezeichnung
+        = link_to @dokument.fahrzeug.bezeichnung, @dokument.fahrzeug
     %tr
       %td.col-sm-3
         %strong Datei
@@ -32,6 +32,6 @@
 
   .btn-group
     - if @dokument.datei && @dokument.typ
-      = link_to 'Download', "download_file/#{@dokument.id}", disable_with: 'Downloading...', method: :post, class: "btn btn-info"
+      = link_to 'Download', "download_file/#{@dokument.id}", disable_with: 'Downloading...', method: :post, class: "btn btn-warning"
     = link_to 'Bearbeiten', edit_dokument_path(@dokument), class: "btn btn-primary"
-    = link_to 'Zurück', dokuments_path, class: "btn btn-default"
+    = link_to 'Zur Übersicht', dokuments_path, class: "btn btn-info"

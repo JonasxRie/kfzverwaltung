@@ -45,6 +45,7 @@ class FahrzeugsController < ApplicationController
   # GET /fahrzeugs/1
   # GET /fahrzeugs/1.json
   def show
+    @dokuments = Dokument.joins("INNER JOIN fahrzeugs ON dokuments.fahrzeug_id = fahrzeugs.id WHERE dokuments.fahrzeug_id = '#{@fahrzeug.id}'")
   end
 
   # GET /fahrzeugs/new
