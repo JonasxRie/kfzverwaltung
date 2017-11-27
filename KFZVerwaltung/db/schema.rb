@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171123074248) do
+ActiveRecord::Schema.define(version: 20171127110357) do
 
   create_table "dokuments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "bezeichnung"
     t.date "speicherdatum"
     t.bigint "fahrzeug_id"
     t.string "typ"
-    t.binary "datei"
+    t.binary "datei", limit: 16777215
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "dateiname"
