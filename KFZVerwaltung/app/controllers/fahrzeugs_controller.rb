@@ -1,8 +1,10 @@
 class FahrzeugsController < ApplicationController
   before_action :set_fahrzeug, only: [:show, :edit, :update, :destroy]
 
+  # Bereitstellung der Daten für die Listenansicht
+  # Wird bei dem Aufruf der folgenden URL ausgeführt:
+  # GET /dokuments
   # GET /fahrzeugs
-  # GET /fahrzeugs.json
   def index
     # Filter und Sortierung anwenden
 
@@ -42,23 +44,25 @@ class FahrzeugsController < ApplicationController
     end
   end
 
+  # Bereitstellung der Daten für die Detailansicht
+  # Wird bei dem Aufruf der folgenden URL ausgeführt:
   # GET /fahrzeugs/1
-  # GET /fahrzeugs/1.json
   def show
     @dokuments = Dokument.joins("INNER JOIN fahrzeugs ON dokuments.fahrzeug_id = fahrzeugs.id WHERE dokuments.fahrzeug_id = '#{@fahrzeug.id}'")
   end
 
+  # Wird bei dem Aufruf der folgenden URL ausgeführt und ermöglicht die Neuanlage:
   # GET /fahrzeugs/new
   def new
     @fahrzeug = Fahrzeug.new
   end
 
+  # Wird bei dem Aufruf der folgenden URL ausgeführt:
   # GET /fahrzeugs/1/edit
   def edit
   end
 
-  # POST /fahrzeugs
-  # POST /fahrzeugs.json
+  # Erstellt eine neue Instanz der des Models und speichert es in der Datenbank
   def create
     @fahrzeug = Fahrzeug.new(fahrzeug_params)
     respond_to do |format|
@@ -72,8 +76,7 @@ class FahrzeugsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /fahrzeugs/1
-  # PATCH/PUT /fahrzeugs/1.json
+  # Ändert die Attribute eines Fahrzeugs in der Datenbank
   def update
     respond_to do |format|
       if @fahrzeug.update(fahrzeug_params)
@@ -94,8 +97,7 @@ class FahrzeugsController < ApplicationController
     redirect_to fahrzeugs_path
   end
 
-  # DELETE /fahrzeugs/1
-  # DELETE /fahrzeugs/1.json
+  # Löscht ein Fahrzeug
   def destroy
     @fahrzeug.destroy
     respond_to do |format|
@@ -105,12 +107,12 @@ class FahrzeugsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+    # Setzt die Instanzvariable mit dem aktuellen Fahrzeug
     def set_fahrzeug
       @fahrzeug = Fahrzeug.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+    # Definiert welche Parameter übergeben werden dürfen
     def fahrzeug_params
       params.require(:fahrzeug).permit(:bezeichnung, :kennzeichen, :tuv, :baujahr, :notizen, :archiviert)
     end

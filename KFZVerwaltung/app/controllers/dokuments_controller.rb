@@ -1,8 +1,9 @@
 class DokumentsController < ApplicationController
   before_action :set_dokument, only: [:show, :edit, :update, :destroy]
 
+  # Bereitstellung der Daten für die Listenansicht
+  # Wird bei dem Aufruf der folgenden URL ausgeführt:
   # GET /dokuments
-  # GET /dokuments.json
   def index
     if params[:f] && !params[:f].empty?
       # Dokumente nach einem Fahrzeug filtern
@@ -34,30 +35,32 @@ class DokumentsController < ApplicationController
     end
   end
 
+  # Bereitstellung der Daten für die Detailansicht
+  # Wird bei dem Aufruf der folgenden URL ausgeführt:
   # GET /dokuments/1
-  # GET /dokuments/1.json
   def show
     @dokument = Dokument.find(params[:id])
-    # send_data @dokument.datei, type: 'pdf', filename: @dokument.bezeichnung + '.pdf'
-    # send_file @dokument.datei, filename: @dokument.bezeichnung + '.pdf 
   end
   
+  # Download der Datei auf das Endgerät des Anwenders
   def download_file
     @dokument = Dokument.find(params[:id])
     send_data(@dokument.datei, type: @dokument.typ, filename: @dokument.dateiname)
   end
 
+  # Wird bei dem Aufruf der folgenden URL ausgeführt und ermöglicht die Neuanlage:
   # GET /dokuments/new
   def new
     @dokument = Dokument.new
   end
 
+  # Wird bei dem Aufruf der folgenden URL ausgeführt:
   # GET /dokuments/1/edit
   def edit
   end
 
-  # POST /dokuments
-  # POST /dokuments.json
+
+  # Erstellt eine neue Instanz der des Models und speichert es in der Datenbank
   def create
     @dokument = Dokument.new(dokument_params)
 
@@ -72,8 +75,7 @@ class DokumentsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /dokuments/1
-  # PATCH/PUT /dokuments/1.json
+  # Ändert die Attribute eines Dokuments in der Datenbank
   def update
     respond_to do |format|
       if @dokument.update(dokument_params)
@@ -86,8 +88,7 @@ class DokumentsController < ApplicationController
     end
   end
 
-  # DELETE /dokuments/1
-  # DELETE /dokuments/1.json
+  # Löscht ein Dokument
   def destroy
     @dokument.destroy
     respond_to do |format|
@@ -97,12 +98,12 @@ class DokumentsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+    # Setzt die Instanzvariable mit dem aktuellen Dokument
     def set_dokument
       @dokument = Dokument.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+    # Definiert welche Parameter übergeben werden dürfen
     def dokument_params
       params.require(:dokument).permit(:bezeichnung, :speicherdatum, :fahrzeug_id, :typ, :datei)
     end
